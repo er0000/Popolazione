@@ -39,13 +39,13 @@ mov<-`DCIS_POPORESBIL1__Popolazione residente  - bilancio__2022_Com_A.csv` %>% s
                 mutate(CodiceComune=paste0(0,as.character(CodiceComune)))) %>% 
   select(any_of(movimento))
 
-## 1.b popstra struttura.csv -----
+## NO -- 1.b popstra struttura.csv -----
 # fonte pop residente al primo gennaio: prendo l'anno successivo rispetto al movimento e tiro indietro
 # es_ 1° gennaio 2023 = 2022
 popstra_struttura <- read_delim("F:/DIREZIONE-GENERALE/DATA/Atlante/Schede per territorio_dati/popstra struttura.csv", 
                                 delim = ";", escape_double = FALSE, trim_ws = TRUE)
 
-## 1.c. popstra(base).csv ------
+##NO -- 1.c. popstra(base).csv ------    
 
 
 popstra_base_ <- read_delim("F:/DIREZIONE-GENERALE/DATA/Atlante/Schede per territorio_dati/popstra(base).csv", 

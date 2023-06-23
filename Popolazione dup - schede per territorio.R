@@ -30,7 +30,7 @@ mov<-`DCIS_POPORESBIL1__Popolazione residente  - bilancio__2022_Com_A.csv` %>% s
          Saldo_migratorio=`saldo migratorio anagrafico e per altri motivi`,
          Saldo_censuario=`saldo censuario totale` ,Saldo_naturale=`saldo naturale anagrafico`) %>% 
   mutate(Cancellati=Cancellati_altro+Cancellati_ex+Cancellati_int,
-         Iscritti=Iscritti_altro,Iscritti_ex,Iscritti_int,
+         Iscritti=Iscritti_altro+Iscritti_ex+Iscritti_int,
          CM="Citt. metropolitana di Bologna",
          Anno=Anno+1,
          `Anno movimento`=Anno) %>% 

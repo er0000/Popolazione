@@ -39,6 +39,18 @@ mov<-`DCIS_POPORESBIL1__Popolazione residente  - bilancio__2022_Com_A.csv` %>% s
                 mutate(CodiceComune=paste0(0,as.character(CodiceComune)))) %>% 
   select(any_of(movimento))
 
+
+stra<- `DCIS_POPSTRBIL1__Stranieri residenti - Bilancio__2022_Com_A.csv` %>% select(-TIPO_INDDEM) %>% 
+  filter(!is.na(obsValue)) %>% 
+  pivot_wider(names_from = TIPO_INDDEM_label.it, values_from = obsValue) %>% 
+  filter(SESSO %in% c(1,2)) %>% 
+  select(Anno=obsTime,CodiceComune=ITTER107,	DescrizioneComune=ITTER107_label.it,Sesso=SESSO,
+         stra0101=`popolazione straniera al 1° gennaio`,	stra1231=`popolazione straniera al 31 dicembre da censimento`) %>% 
+  mutate( Anno=Anno+1,
+          `Anno movimento`=Anno)
+
+inner_join(mov,stra) %>%  select(any_of(movimento))%>% write.csv2('movimento.csv',sep=';',row.names = F)
+
 ## NO -- 1.b popstra struttura.csv -----
 # fonte pop residente al primo gennaio: prendo l'anno successivo rispetto al movimento e tiro indietro
 # es_ 1° gennaio 2023 = 2022
